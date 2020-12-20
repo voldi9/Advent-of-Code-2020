@@ -4,6 +4,7 @@ module Aoc(module Aoc, module Prelude, module Data.List, module Data.Maybe, modu
 import Data.Bits
 import Data.List
 import Data.Maybe
+import qualified Text.Parsec as Parsec
 
 splitOn :: Char -> String -> [String]
 splitOn c s = filter (not . null) . foldr f [""] $ s where
@@ -14,5 +15,5 @@ splitOn c s = filter (not . null) . foldr f [""] $ s where
 splitOnNewline :: String -> [String]
 splitOnNewline s = splitOn '\n' s
 
-countItem :: Eq a => a -> [a] -> Int
-countItem x s = length . filter (==x) $ s
+count :: Eq a => a -> [a] -> Int
+count x = length . filter (==x)
