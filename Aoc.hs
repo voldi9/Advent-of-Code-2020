@@ -1,19 +1,17 @@
-{-# LANGUAGE ScopedTypeVariables, TypeFamilies #-}
-module Aoc(module Aoc, module Prelude, module Data.List, module Data.Maybe, module Data.Bits) where
+{-# LANGUAGE ScopedTypeVariables, TypeFamilies, OverloadedStrings #-}
+module Aoc(module Aoc, module Prelude, module Data.List, module Data.List.Split, module Data.Maybe, module Data.Bits, module Data.Char, module Text.Read, module Text.Regex) where
 
 import Data.Bits
+import Data.Char
 import Data.List
+import Data.List.Split
 import Data.Maybe
+import Text.Read
+import Text.Regex
 import qualified Text.Parsec as Parsec
 
-splitOn :: Char -> String -> [String]
-splitOn c s = filter (not . null) . foldr f [""] $ s where
-  f c' (x:xs)
-    | c' == c   = "":x:xs
-    | otherwise = (c':x):xs
-
 splitOnNewline :: String -> [String]
-splitOnNewline s = splitOn '\n' s
+splitOnNewline s = splitOn "\n" s
 
 count :: Eq a => a -> [a] -> Int
 count x = length . filter (==x)
