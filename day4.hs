@@ -31,4 +31,3 @@ main = do
   print . count True $ map (and . map isValid . parseRegexps) rows
   where
     f l = all (`isInfixOf` l) required
-    xd row = print "a"
