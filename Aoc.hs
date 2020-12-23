@@ -11,7 +11,13 @@ import Text.Regex
 import qualified Text.Parsec as Parsec
 
 splitOnNewline :: String -> [String]
-splitOnNewline s = splitOn "\n" s
+splitOnNewline = splitRemoveBlanks "\n"
+
+splitOnBlankLine :: String -> [String]
+splitOnBlankLine = splitRemoveBlanks "\n\n"
+
+splitRemoveBlanks :: String -> String -> [String]
+splitRemoveBlanks d s = filter (not . null) $ splitOn d s
 
 count :: Eq a => a -> [a] -> Int
 count x = length . filter (==x)

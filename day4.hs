@@ -26,7 +26,7 @@ parseRegexps s = map (f s . rgx) required where
 
 main = do
   contents <- getContents
-  let rows = splitOn "\n\n" contents
+  let rows = splitOnBlankLine contents
   print . count True $ map f rows
   print . count True $ map (and . map isValid . parseRegexps) rows
   where
